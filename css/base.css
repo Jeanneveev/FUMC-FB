@@ -43,7 +43,7 @@ table, td, tr, th, form, fieldset, em, button, a {
 
 :root {
     /* CSS variables that will be used across the page */
-    --page-background-color: #ffffff;
+    --page-background-color: #f4af1b;
     --page-font-color: #333333;
     --inactive-font-color: #d0d0d0;
     --inactive-background-color: #f0f0f0;
