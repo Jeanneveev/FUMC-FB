@@ -10,6 +10,20 @@
             <input type="text" id="tag" name="tag" required placeholder="Enter new tag">
         </fieldset>
         
+        <!-- if tag already exists in dbTags, don't add it -->
+        <?php
+            if(isset($_POST['tag'])){
+                foreach ($_POST['tag'] as $selected) {
+                    $sq="SELECT dbTags WHERE tagText=$selected";
+                    if(!$sq){
+                        echo "adding new tag";
+                        mysqli_query($con, "INSERT INTO dbTags(tagText) VALUES ('$selected')");
+                    }else{
+                        echo "this tag already exists";
+                    }
+                }
+            }
+        ?>
 
         <p>Press submit to add tag.</p>
         <input type="submit" name="addtag-form" value="Submit">

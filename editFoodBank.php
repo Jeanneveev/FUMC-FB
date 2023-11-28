@@ -371,8 +371,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         if(isset($_POST['tag'])){
                             foreach ($_POST['tag'] as $selected) {
                                 // echo "<br>".$selected. "was checked.<br>";
-                                //TODO: Error checking to prevent repeat tags from being added
-                                mysqli_query($con, "INSERT INTO dbFBTags(id, userID) VALUES ('$selected','$id')");
+                                // if there isn't a tag in dbFBTags with that id already, add it
+                                $sq="SELECT dbFBTags WHERE id=$selected";
+                                if(!$sq){
+                                    // echo "tag added";
+                                    mysqli_query($con, "INSERT INTO dbFBTags(id, userID) VALUES ('$selected','$id')");
+                                } else{
+                                    // echo "tag already exists";
+                                }
                             }
                         }
                     ?>
